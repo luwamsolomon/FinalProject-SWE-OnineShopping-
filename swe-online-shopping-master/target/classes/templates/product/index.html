@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{common/masterlayout}"
+	
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	
+	>
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/products/index.css}" />
+    <title>Products Management App - Browse List of Products</title>
+</head>
+<body>
+    <th:block layout:fragment="content">
+    
+     <div style="height:100px; clear: both;">
+            <span style="font-size: 1.5em">List of Products in stock</span>
+            <span style="float:right;">
+                <a class="btn btn-outline-success btn-lg" href="/product/new">Add a New Product</a>
+            </span>
+        </div>
+ 
+    
+    <div th:each="product, iStat : ${productPage.content}">
+   
+  
+        		
+        	<div style="float:left; width:33%; padding:10px 10px 10px 10px; border: 1px;">
+        		<table class="table table-hover">
+        		<tr><td>
+        		
+        		<img style="display: block;margin-left: auto;margin-right: auto;width: 50%;" th:src="@{'/uploads/'+${product.productIcon}}" height="150" width="150" />
+        		</td></tr>
+        		<tr>
+        		
+        		<td th:text="${product.productName}"></td>
+        		</tr>
+        		<tr>
+                    
+                    <td th:text="${#numbers.formatCurrency(product.productPrice)}"></td>
+                    </tr>
+                    <tr>
+                    <td th:text="${'Available: &nbsp&nbsp&nbsp&nbsp'+product.productStock}"></td>
+                    </tr>
+                    <tr>
+                    <td th:text="${product.productDescription}"></td>
+                    </tr>
+                    <tr>
+                    <td><a th:href="'/cart/add/'+${product.productId}" >Add to cart</a></td>
+        		
+        		
+        		
+        		</tr>
+        		
+        		
+        		</table>
+        		</div>
+        		
+        		
+        		
+        		
+        		
+    
+   
+   </div>
+   
+   
+   
+
+ 
+ <div style="clear: both; text-align: center;">
+
+    <a style="text-decoration: none;" th:each="pageNumber : ${pageNumbers}" 
+    
+    th:href="@{/product/list(size=${productPage.size}, page=${pageNumber})}"
+    
+        th:text="${pageNumber}+'&nbsp&nbsp&nbsp&nbsp&nbsp'"
+    
+        th:class="${pageNumber==productPage.number + 1} ? active" >
+        
+        </a>
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+   
+   
+   
+   
+    </th:block>
+    
+    
+    
+
+    
+    
+    
+    
+    
+</body>
+</html>

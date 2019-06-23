@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{common/masterlayout}">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/homepage/index.css}" />
+    <title>Products Management App - Add a New Product</title>
+    
+</head>
+<body onload="document.querySelector('#productId').focus();">
+
+    <th:block layout:fragment="content">
+        <form name="newproduct" id="productForm" method="post" action="/product/new"  enctype="multipart/form-data" th:object="${product}" onsubmit="return validateform()">
+            <fieldset>
+                <legend>New Product Form</legend>
+                
+                <div class="form-group">
+                    <label for="productId">Product Id</label>
+                    <span th:if="${#fields.hasErrors('productId')}" th:errors="*{productId}"
+									class="alert alert-danger"></span>
+                    <input id="productId" name="productId" type="text" class="form-control" th:value="${product.productId}" placeholder="Product Id Required" required="required" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"
+									class="alert alert-danger"></span>
+                    <input id="productName" name="productName" type="text" class="form-control" th:value="${product.productName}" placeholder="Product Name Required" required="required" >
+                </div>
+                <div class="form-group">
+                        <label for="name">Product Description</label>
+                        <span th:if="${#fields.hasErrors('productDescription')}" th:errors="*{productDescription}"
+                                        class="alert alert-danger"></span>
+                        <input id="productDescription" name="productDescription" type="text" class="form-control" th:value="${product.productDescription}" required="required" >
+                </div>   
+                 <div class="form-group">
+                <label for="file">Image</label>
+                <input type="file" name="file" />
+               
+                <input id="productIcon" name="productIcon" type="hidden" class="form-control" th:value="${product.productIcon}">
+            </div>            
+                <div class="form-group">
+                        <label for="productPrice">Unit Price</label>
+                        <span th:if="${#fields.hasErrors('productPrice')}" th:errors="*{productPrice}"
+                            class="alert alert-danger"></span>
+                        <input id="productPrice" name="productPrice" type="text" class="form-control" th:value="${product.productPrice}" required="required" >
+                </div>  
+                
+                
+               
+                
+                
+                
+           <!--      <div class="form-group">
+                    <label for="categoryType">categoryType 0/1</label>
+                    <span th:if="${#fields.hasErrors('categoryType')}" th:errors="*{categoryType}"
+									class="alert alert-danger"></span>
+                    <input id="categoryType" name="categoryType" type="text" class="form-control" th:value="${product.categoryType}" placeholder="Product Stocks Required" >
+                </div>
+              -->   
+                
+                 <div class="form-group">
+                 <select name="categoryType" id="categoryType" th:field="*{categoryType}" class="form-control" required="required" >
+
+                                      <option th:value="''" th:text="'Select Category'"></option>
+
+                                    <option th:value="'Drinks'" th:text="Drinks"></option>
+
+								    <option th:value="'Clothes'" th:text="Clothes"></option>
+								     <option th:value="'Books'" th:text="Books"></option>
+								      <option th:value="'Electronics'" th:text="Electronics"></option>
+
+                                    
+
+                                </select>
+                    </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+               
+                <div class="form-group">
+                    <label for="productIcon"></label>
+                    <span th:if="${#fields.hasErrors('productIcon')}" th:errors="*{productIcon}"
+									class="alert alert-danger"></span>
+                    <input id="productIcon" name="productIcon" type="hidden" class="form-control" th:value="${product.productIcon}" placeholder="Product Stocks Required" >
+                </div>
+                
+                
+                <div class="form-group">
+                    <label for="productStock">Stocks</label>
+                    <span th:if="${#fields.hasErrors('productStock')}" th:errors="*{productStock}"
+									class="alert alert-danger"></span>
+                    <input id="productStock" name="productStock" type="text" class="form-control" th:value="${product.productStock}" placeholder="Product Stocks Required" required="required" >
+                </div>
+                              
+                <div class="form-group">
+                        <label for="dateMfd">Date Manufactured</label>
+                        <span th:if="${#fields.hasErrors('dateMfd')}" th:errors="*{dateMfd}"
+                            class="alert alert-danger"></span>
+                        <input id="dateMfd" name="dateMfd" type="date" class="form-control" aria-describedby="dateMfdHelp" th:value="${product.dateMfd}" required="required" >
+                        <small id="dateMfdHelp" class="form-text text-muted">Enter a valid Date.</small>
+                </div>   
+                
+                
+                
+                
+            
+                
+                 
+                <div style="float:right;">
+                    <a href="/product/index" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                    <button id="btnSubmit" type="submit" class="btn btn-outline-success">Add Product</button>
+                </div>
+            </fieldset>
+        </form>
+    </th:block>
+
+    <th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>

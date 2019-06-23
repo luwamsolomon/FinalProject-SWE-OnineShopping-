@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="author" content="O. Kalu">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/masterlayout.css}" />
+    
+    
+    
+    
+    <style>
+    
+    .menubar {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  margin: 6px 0;
+}
+    
+    
+    
+    
+.dropbtn {
+  background-color: red;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+	
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {text-decoration:none;background-color: #f1f1f1;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+	
+	
+   
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="/"><img height="30px" width="70px" src="/logo/logo.gif" /></a>
+        <span style="color: #ffffff;"> &nbsp; | &nbsp;</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        
+        
+        <div class="dropdown" style="float:left;">
+  <a href="#">
+<div class="menubar"></div>
+<div class="menubar"></div>
+<div class="menubar"></div>
+</a>
+  <div class="dropdown-content" style="left:0;">
+  
+  
+  
+  
+    <a href="/product/list">All Products</a>
+    <a href="#">Drinks</a>
+    <a href="#">Clothes</a>
+    <a href="#">Books</a>
+    <a href="#">Electronics</a>
+    <a href="#">Food</a>
+    
+  </div>
+</div>
+        
+        
+  
+        <div  class="collapse navbar-collapse" id="navbarsExampleDefault">
+         
+           
+                <a style="color:white;" class="nav-link" href="/product/list"> All Products</a>
+                 <a style="color:white;" class="nav-link" href="#"> Drinks</a>
+                  <a style="color:white;" class="nav-link" href="#"> Clothes</a>
+                   <a style="color:white;" class="nav-link" href="#"> Books</a>
+           
+       </div>
+        
+       
+        
+       
+    <!--  <form class="form-inline my-2 my-lg-0"  > -->   
+    
+
+     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+         
+           
+                <a style="color:white;" class="nav-link" href="/cart"> Cart</a>
+              
+                 <a style="color:white;" class="nav-link" href="/login"> Sign In</a>
+                  <a style="color:white;" class="nav-link" href="/register"> Sign Up</a>
+                  
+       </div>
+    
+        
+        <form  class="form-inline my-2 my-lg-0" method="get" action="/search">       <!--  th:object="${product}">-->
+        
+        
+          <input class="form-control mr-sm-2" type="text" name="searchword" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      
+    </nav>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+    <div class="container">
+        <!--Thymeleaf placeholder for the page Content-->
+        <th:block layout:fragment="content"></th:block>
+        <!--End placeholder-->
+    </div> 
+    
+    
+
+      
+
+    <!--Thymeleaf placeholder for additional footer content-->
+    <th:block layout:fragment="footer"></th:block>
+    <!--End placeholder-->
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Online Shopping Project SWE</span><span style="float:right;" class="text-muted">&copy; May 2019</span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html>

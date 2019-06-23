@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{common/masterlayout}">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/products/index.css}" />
+    <title>Products Management App - Browse List of Products</title>
+</head>
+<body>
+    <th:block layout:fragment="content">
+        <div>
+            <span style="font-size: 1.5em">Your Cart List</span>
+            
+        </div>
+        
+        <p>&nbsp;</p>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Unit Price</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+            	
+                <tr class="datarow" th:each="item,iterStat : ${items}">
+                    <th scope="row" th:text="${iterStat.count}+'.'"></th>
+                    <td>
+                    <img th:src="@{'http://localhost:8080/uploads/'+${item.productInfo.productIcon}}" height="75" width="75" />
+                    
+                    </td>
+                    <td th:text="${item.productInfo.productName}"></td>
+                    <td th:text="${#numbers.formatCurrency(item.productInfo.productPrice)}"></td>
+                    
+                </tr>
+                <tr><td></td><td></td><td>Total:</td><td th:text="${#numbers.formatCurrency(total)}"></td>
+            </tbody>
+        </table>
+        <div th:if="${total} != '0'">
+        
+        <a href="/cart/checkout" >Check Out</a>
+        </div>
+        
+        
+        
+        
+    </th:block>
+
+    <th:block layout:fragment="footer"></th:block>
+    
+</body>
+</html>
